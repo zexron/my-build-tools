@@ -1,0 +1,16 @@
+# MacOS
+.DS_Store
+
+# IDEA
+.idea/
+*.iml
+
+# vscode
+.vscode/
+
+# Development Folders
+tmp/
+dev/
+
+# NodeJS
+node_modules/
