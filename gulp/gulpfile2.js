@@ -184,6 +184,9 @@ function initWatch () {
         if (vinyl.extname === '.less') {
           destFile = destFile.replace(/\.less$/, '.css')
         }
+        if (vinyl.extname === '.ts') {
+          destFile = destFile.replace(/\.ts$/, '.js')
+        }
         del([destFile, destFile + '.map'], {force: true})
           .then(() => {
             debug.remove.log(path.relative('./' + projectPath, vinyl.path), 'File Remove', projectName)
