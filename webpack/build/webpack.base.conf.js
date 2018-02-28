@@ -29,7 +29,7 @@ module.exports = {
         test: /\.tsx?$/,
         use: [
           // {
-            // loader: 'babel-loader'
+          // loader: 'babel-loader'
           // },
           {
             loader: 'awesome-typescript-loader',
@@ -40,7 +40,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src')]
+        include: [resolve('src'), ...projectConfig.resolves.map(modulePath => resolve(modulePath))]
       },
       {
         test: /\.html$/,

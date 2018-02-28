@@ -5,41 +5,48 @@
 const path = require('path')
 
 module.exports = {
-  // 输出文件夹位置
+  // Output Folder
   outputPath: path.resolve(__dirname, '../dist'),
 
   dev: {
-    // 开发环境热更新本地服务器端口
+    // port for dev mode
     port: 5000
   },
 
   build: {
-    // 入口js文件
+    // entries
     entry: {
-      index: './src/index.js',
-      test: './src/testTs.ts'
+      index: './src/index.ts',
     },
 
-    // 页面template文件
+    // template html files
     sites: [
       {
         filename: 'index.html',
         template: './index.html',
 
         // 上面entry定义的入口名
-        chunks: ['index', 'test']
-      }
+        chunks: ['index']
+      },
     ],
 
-    // 无法正常webpack的全局变量包
+    // For those not module-like packages
+    // Will be run over in window environment
     globals: [
-      {
-        module: 'zepto',
-        name: 'Zepto'
-      }
+      // {
+      //   module: 'zepto',
+      //   name: 'Zepto'
+      // }
     ],
 
-    // 输出后的资源文件夹绝对路径（项目为准）
-    assetsPublicPath: '/weixin/dist/'
+    // For those modules under node_modules folder
+    // which can't uglify since it's in es6 style
+    resolves: [
+      // '/node_modules/swiper/',
+      // '/node_modules/dom7/'
+    ],
+
+    // Your absolute project path on the server
+    assetsPublicPath: '/'
   }
 }
