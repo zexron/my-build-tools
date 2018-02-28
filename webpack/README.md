@@ -16,6 +16,8 @@ $ curl -o ./download.zip http://www.status404.cn/BuildTool/webpack.zip && unzip 
 - [Typescript](http://www.typescriptlang.org/) is available
 
 ### To Build a Project
+- Setup your project settings in `config/index.js`
+
 - Dev mode with localhost
 ```javascript
 $ npm run dev
