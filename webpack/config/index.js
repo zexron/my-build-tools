@@ -16,18 +16,25 @@ module.exports = {
   build: {
     // entries
     entry: {
-      index: './src/index.ts',
+      index: './src/index.ts'
     },
 
     // template html files
     sites: [
+      {
+        filename: 'pug.html',
+        template: './pug/index.pug',
+
+        // 上面entry定义的入口名
+        chunks: ['index']
+      },
       {
         filename: 'index.html',
         template: './index.html',
 
         // 上面entry定义的入口名
         chunks: ['index']
-      },
+      }
     ],
 
     // For those not module-like packages

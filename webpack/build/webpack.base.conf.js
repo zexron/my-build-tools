@@ -15,7 +15,7 @@ module.exports = {
   entry: projectConfig.entry,
   output: {
     path: outputPath,
-    filename: 'static/js/[name].js',
+    filename: 'static/js/[name].js'
     // publicPath: projectConfig.assetsPublicPath
   },
   resolve: {
@@ -32,8 +32,8 @@ module.exports = {
           // loader: 'babel-loader'
           // },
           {
-            loader: 'awesome-typescript-loader',
-          },
+            loader: 'awesome-typescript-loader'
+          }
         ],
         include: [resolve('src')]
       },
@@ -45,6 +45,11 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'html-loader',
+        include: [resolve('src')]
+      },
+      {
+        test: /\.pug$/,
+        loader: ['html-loader', 'pug-html-loader'],
         include: [resolve('src')]
       },
       {

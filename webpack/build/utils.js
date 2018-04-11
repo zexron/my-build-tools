@@ -5,12 +5,13 @@
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {outputPath, build} = require('../config')
-const {sites, globals} = build
+const { outputPath, build } = require('../config')
+const { sites, globals } = build
 
 exports.getSites = function (minify) {
-  return sites.map(({filename, template, chunks}) => {
+  return sites.map(({ filename, template, chunks }) => {
     return new HtmlWebpackPlugin({
+      title: 'test',
       filename: path.join(outputPath, filename),
       template: path.join(__dirname, '../src', template),
       chunks: ['vendor', 'manifest', ...chunks],
@@ -29,7 +30,7 @@ exports.getSites = function (minify) {
 }
 
 exports.moduleExportLoaders = function () {
-  return globals.map(({module, name}) => {
+  return globals.map(({ module, name }) => {
     return {
       test: require.resolve(module),
       use: [
@@ -87,7 +88,7 @@ exports.cssLoaders = function (options) {
     css: generateLoaders(),
     postcss: generateLoaders(),
     less: generateLoaders('less'),
-    sass: generateLoaders('sass', {indentedSyntax: true}),
+    sass: generateLoaders('sass', { indentedSyntax: true }),
     scss: generateLoaders('sass'),
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus')
